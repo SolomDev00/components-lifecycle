@@ -15,6 +15,6 @@ export default class HomePage extends Component<IProps, IState> {
     };
   }
   render(): ReactNode {
-    return <div>{this.state.counter}</div>;
+    return <div>Home Page</div>;
   }
 }

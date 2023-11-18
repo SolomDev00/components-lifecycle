@@ -12,12 +12,20 @@ export default class ProductsPage extends Component<IProps, IState> {
       products: [],
     };
   }
+
   componentDidMount(): void {
     fetch("https://dummyjson.com/products")
       .then((res) => res.json())
       .then((data) => {
         this.setState({ products: data.products });
       });
+  }
+
+  componentWillUnmount(): void {
+    console.log(
+      "%cWill Unmounting - componentWillUnmount() - Destroyed",
+      "backgroundColor: red"
+    );
   }
 
   render(): ReactNode {
