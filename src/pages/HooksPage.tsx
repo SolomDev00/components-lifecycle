@@ -7,17 +7,18 @@ const HooksPage = () => {
     const controller = new AbortController();
     const signal = controller.signal;
 
-    const fetchProducts = async () => {
+    (async () => {
       try {
-        const res = await fetch("https://dummyjson.com/products", { signal });
-        const jsonData = await res.json();
-        setProducts(jsonData.products);
+        const res = await (
+          await fetch("https://dummyjson.com/products", {
+            signal,
+          })
+        ).json();
+        setProducts(res.products);
       } catch (error) {
         console.log(error);
       }
-    };
-
-    fetchProducts();
+    })();
 
     return () => {
       controller.abort();
